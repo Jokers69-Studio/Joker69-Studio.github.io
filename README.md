@@ -1,8 +1,6 @@
-<p align="center">
-  <img src="/assets/img/Logo-Of-TheJokerML.jpg" alt="Jokers69 Studio Logo" style="border-radius: 50%; width: 150px; height: 150px;">
-</p>
+# 🎭 Jokers69 Studio
 
-# 🎭 Jokers69 Studio  
+![Jokers69 Studio Logo](/assets/img/Logo-Of-TheJokerML.jpg)
 
 **Where Creativity Meets Innovation**  
 
@@ -56,7 +54,7 @@ At Jokers69 Studio, we believe in:
 
 ## 🤝 Let's Collaborate  
 
-We’d love to connect with fellow developers and creative minds. Feel free to:  
+We'd love to connect with fellow developers and creative minds. Feel free to:  
 
 - **🌐 Explore our projects**: [GitHub Repository](https://github.com/thejokers69)  
 - **📧 Contact us**: [Moahmed Lakssir](mailto:thejokkers69@gmail.com)  
