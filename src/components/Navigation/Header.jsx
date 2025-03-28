@@ -1,8 +1,11 @@
-export default function Header() {
+import React from 'react';
+import Logo from '../../assets/img/Logo-Of-TheJokerML.jpg';
+
+const Header = () => {
   return (
     <header className="text-center py-8 bg-joker-purple">
       <img
-        src="/assets/img/Logo-Of-TheJokerML.jpg"
+        src={Logo}
         alt="Jokers69 Studio Logo"
         className="mx-auto mb-4 w-32 h-32 rounded-full"
       />
@@ -16,4 +19,6 @@ export default function Header() {
       </a>
     </header>
   );
-}
+};
+
+export default Header;
