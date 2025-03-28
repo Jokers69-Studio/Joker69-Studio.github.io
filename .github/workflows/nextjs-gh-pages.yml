@@ -28,7 +28,9 @@ jobs:
           cache: "pnpm"
 
       - name: Install pnpm
-        run: npm install -g pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
 
       - name: Verify pnpm installation
         run: pnpm --version

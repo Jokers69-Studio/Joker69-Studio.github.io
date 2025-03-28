@@ -1,11 +1,10 @@
 import React from 'react';
-import Logo from '../../assets/img/Logo-Of-TheJokerML.jpg';
 
-const About = () => {
+const Header: React.FC = () => {
   return (
     <header className="text-center py-8 bg-joker-purple">
       <img
-        src={Logo}
+        src="/assets/img/Logo-Of-TheJokerML.jpg"
         alt="Jokers69 Studio Logo"
         className="mx-auto mb-4 w-32 h-32 rounded-full"
       />
@@ -21,4 +20,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Header;
