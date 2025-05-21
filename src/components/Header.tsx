@@ -1,5 +1,5 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
 const Header: React.FC = () => {
   return (
@@ -14,8 +14,8 @@ const Header: React.FC = () => {
           priority
         />
       </div>
-      <h1 className="text-5xl font-bold">🎭 Jokers69 Studio</h1>
-      <p className="text-xl mt-2">Where Creativity Meets Innovation</p>
+      {/* <h1 className="text-5xl font-bold">🎭 Jokers69 Studio</h1>
+      <p className="text-xl mt-2">Where Creativity Meets Innovation</p> */}
       <a
         href="#projects"
         className="mt-4 inline-block bg-white text-joker-purple py-2 px-4 rounded-full font-semibold hover:bg-gray-200"
