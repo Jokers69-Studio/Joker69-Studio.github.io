@@ -89,10 +89,6 @@ body {
 html {
   scrollbar-width: thin;
   scrollbar-color: #7c3aed var(--muted);
-}
-
-/* Smooth scrolling with enhanced easing */
-html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px; /* Account for sticky header */
 }
