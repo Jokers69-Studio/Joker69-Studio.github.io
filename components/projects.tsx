@@ -8,7 +8,14 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github, Star, GitFork } from "lucide-react";
+import {
+  ExternalLink,
+  Github,
+  Star,
+  GitFork,
+  Code2,
+  Sparkles,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Projects: React.FC = () => {
@@ -22,6 +29,8 @@ const Projects: React.FC = () => {
       stars: "24",
       forks: "8",
       color: "purple",
+      icon: "🎴",
+      features: ["Real-time", "Multiplayer", "Scalable"],
     },
     {
       name: "CodeJoker CLI",
@@ -32,6 +41,8 @@ const Projects: React.FC = () => {
       stars: "156",
       forks: "23",
       color: "pink",
+      icon: "⚡",
+      features: ["CLI", "Automation", "Productivity"],
     },
     {
       name: "JokerSphere",
@@ -42,6 +53,8 @@ const Projects: React.FC = () => {
       stars: "89",
       forks: "15",
       color: "blue",
+      icon: "🌐",
+      features: ["Social", "Collaboration", "Innovation"],
     },
   ];
 
@@ -72,14 +85,27 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="py-16 px-4">
-      <div className="max-w-7xl mx-auto">
+    <section
+      id="projects"
+      className="py-16 px-0 sm:px-4 relative overflow-hidden w-full"
+    >
+      {/* Background decoration */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 -right-20 w-64 h-64 bg-purple-200/10 dark:bg-purple-800/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 -left-20 w-48 h-48 bg-pink-200/10 dark:bg-pink-800/5 rounded-full blur-3xl animate-pulse" />
+      </div>
+      <div className="relative z-10 w-full px-0 sm:px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent">
-            📂 Featured Projects
-          </h2>
+          <div className="inline-flex items-center gap-2 mb-4">
+            <Sparkles className="w-6 h-6 text-purple-500" />
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent">
+              📂 Featured Projects
+            </h2>
+            <Sparkles className="w-6 h-6 text-pink-500" />
+          </div>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Discover our latest innovations and creative solutions
+            Discover our latest innovations and creative solutions that push the
+            boundaries of what&apos;s possible
           </p>
         </div>
 
@@ -102,9 +128,14 @@ const Projects: React.FC = () => {
 
               <CardHeader className="relative z-10 pb-4">
                 <div className="flex items-start justify-between mb-3">
-                  <CardTitle className="text-xl font-bold group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
-                    {project.name}
-                  </CardTitle>
+                  <div className="flex items-center gap-3">
+                    <div className="text-2xl group-hover:scale-110 transition-transform duration-300">
+                      {project.icon}
+                    </div>
+                    <CardTitle className="text-xl font-bold group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
+                      {project.name}
+                    </CardTitle>
+                  </div>
                   <Badge
                     variant="outline"
                     className={cn(
@@ -116,13 +147,26 @@ const Projects: React.FC = () => {
                   </Badge>
                 </div>
 
+                {/* Features */}
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {project.features.map((feature) => (
+                    <Badge
+                      key={feature}
+                      variant="secondary"
+                      className="text-xs px-2 py-1 bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                    >
+                      {feature}
+                    </Badge>
+                  ))}
+                </div>
+
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2 mb-3">
                   {project.stack.map((tech) => (
                     <Badge
                       key={tech}
-                      variant="secondary"
-                      className="text-xs px-2 py-1 bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                      variant="outline"
+                      className="text-xs px-2 py-1 border-gray-300 dark:border-gray-600"
                     >
                       {tech}
                     </Badge>
@@ -132,7 +176,7 @@ const Projects: React.FC = () => {
                 {/* Stats */}
                 <div className="flex items-center gap-4 text-sm text-muted-foreground">
                   <div className="flex items-center gap-1">
-                    <Star className="h-3 w-3" />
+                    <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
                     <span>{project.stars}</span>
                   </div>
                   <div className="flex items-center gap-1">
@@ -173,14 +217,18 @@ const Projects: React.FC = () => {
 
         {/* Call to action */}
         <div className="text-center mt-16">
-          <p className="text-muted-foreground mb-6">
-            Want to see more? Check out our complete portfolio on GitHub
-          </p>
+          <div className="inline-flex items-center gap-2 mb-6">
+            <Code2 className="w-5 h-5 text-purple-500" />
+            <p className="text-muted-foreground">
+              Want to see more? Check out our complete portfolio on GitHub
+            </p>
+            <Code2 className="w-5 h-5 text-pink-500" />
+          </div>
           <Button
             variant="outline"
             size="lg"
             asChild
-            className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 border-2 hover:scale-105 transition-all duration-300"
+            className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 border-2 hover:scale-105 transition-all duration-300 group"
           >
             <a
               href="https://github.com/thejokers69"
@@ -190,7 +238,7 @@ const Projects: React.FC = () => {
             >
               <Github className="h-5 w-5" />
               View All Projects
-              <ExternalLink className="h-4 w-4" />
+              <ExternalLink className="h-4 w-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </a>
           </Button>
         </div>

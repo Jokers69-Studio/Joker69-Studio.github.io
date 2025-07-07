@@ -1,8 +1,50 @@
 .
-├── CNAME
+├── app
+│   ├── about
+│   │   └── page.tsx
+│   ├── assets
+│   │   └── img
+│   │       └── Logo-Of-TheJokerML.jpg
+│   ├── contact
+│   │   └── page.tsx
+│   ├── dashboard
+│   │   └── page.tsx
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── projects
+│   │   └── page.tsx
+│   ├── services
+│   │   └── page.tsx
+│   └── skills
+│       └── page.tsx
+├── components
+│   ├── app-sidebar.tsx
+│   ├── footer.tsx
+│   ├── mode-toggle.tsx
+│   ├── projects.tsx
+│   ├── search-form.tsx
+│   ├── ui
+│   │   ├── badge.tsx
+│   │   ├── breadcrumb.tsx
+│   │   ├── button.tsx
+│   │   ├── card.tsx
+│   │   ├── dropdown-menu.tsx
+│   │   ├── input.tsx
+│   │   ├── label.tsx
+│   │   ├── separator.tsx
+│   │   ├── sheet.tsx
+│   │   ├── sidebar.tsx
+│   │   ├── skeleton.tsx
+│   │   └── tooltip.tsx
+│   └── version-switcher.tsx
 ├── components.json
 ├── eslint.config.mjs
+├── hooks
+│   └── use-mobile.ts
 ├── index.html
+├── lib
+│   └── utils.ts
 ├── LICENSE
 ├── next-env.d.ts
 ├── next.config.ts
@@ -10,55 +52,15 @@
 ├── pnpm-lock.yaml
 ├── postcss.config.mjs
 ├── project_structure.txt
+├── providers
+│   └── theme-provider.tsx
 ├── public
 │   └── assets
 │       └── img
 │           └── Logo-Of-TheJokerML.jpg
 ├── README.md
 ├── SECURITY.md
-├── src
-│   ├── app
-│   │   ├── api
-│   │   │   └── hello
-│   │   │       └── route.ts
-│   │   ├── error.tsx
-│   │   ├── layout.tsx
-│   │   ├── loading.tsx
-│   │   ├── not-found.tsx
-│   │   └── page.tsx
-│   ├── assets
-│   │   └── img
-│   │       └── Logo-Of-TheJokerML.jpg
-│   ├── components
-│   │   ├── About.tsx
-│   │   ├── Footer.tsx
-│   │   ├── Layout
-│   │   │   ├── AppLayout.tsx
-│   │   │   ├── AppSidebar.tsx
-│   │   │   └── index.ts
-│   │   ├── mode-toggle.tsx
-│   │   ├── Projects.tsx
-│   │   ├── Skills.tsx
-│   │   └── ui
-│   │       ├── badge.tsx
-│   │       ├── button.tsx
-│   │       ├── card.tsx
-│   │       ├── dropdown-menu.tsx
-│   │       ├── input.tsx
-│   │       ├── navigation-menu.tsx
-│   │       ├── separator.tsx
-│   │       ├── sheet.tsx
-│   │       ├── sidebar.tsx
-│   │       ├── skeleton.tsx
-│   │       └── tooltip.tsx
-│   ├── hooks
-│   │   └── use-mobile.ts
-│   ├── lib
-│   │   └── utils.ts
-│   ├── providers
-│   │   └── theme-provider.tsx
-│   └── styles
-│       └── globals.css
-└── tsconfig.json
+├── tsconfig.json
+└── vercel.json
 
-17 directories, 45 files
+18 directories, 46 files
