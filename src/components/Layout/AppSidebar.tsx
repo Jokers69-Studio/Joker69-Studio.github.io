@@ -31,6 +31,7 @@ import {
   Heart,
 } from "lucide-react";
 import { ModeToggle } from "@/components/mode-toggle";
+import { cn } from "@/lib/utils";
 
 const navigationItems = [
   {
@@ -182,7 +183,10 @@ export function AppSidebar() {
                   className="flex items-center gap-3 p-2 rounded-lg hover:bg-muted/50 transition-colors group cursor-pointer"
                 >
                   <div
-                    className={`p-2 rounded-md ${service.color} group-hover:scale-110 transition-transform`}
+                    className={cn(
+                      "p-2 rounded-md group-hover:scale-110 transition-transform",
+                      service.color
+                    )}
                   >
                     <service.icon className="h-3 w-3" />
                   </div>
