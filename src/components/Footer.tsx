@@ -6,33 +6,33 @@ import { Github, Mail, Heart, ExternalLink, Code, Palette } from "lucide-react";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  
+
   const socialLinks = [
     {
       href: "mailto:thejokkers69@gmail.com",
       label: "Email",
       icon: Mail,
-      description: "Get in touch"
+      description: "Get in touch",
     },
     {
       href: "https://github.com/thejokers69",
       label: "GitHub",
       icon: Github,
-      description: "View our code"
-    }
+      description: "View our code",
+    },
   ];
 
   const quickLinks = [
     { href: "#about", label: "About", icon: "🎭" },
     { href: "#projects", label: "Projects", icon: "📂" },
-    { href: "#skills", label: "Skills", icon: "💪" }
+    { href: "#skills", label: "Skills", icon: "💪" },
   ];
 
   return (
     <footer className="relative mt-20 border-t border-border/40 bg-gradient-to-br from-background via-muted/20 to-background">
       {/* Decorative gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 via-pink-500/5 to-blue-500/5 pointer-events-none" />
-      
+
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-16">
         {/* Main footer content */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
@@ -44,18 +44,27 @@ const Footer: React.FC = () => {
                 <h3 className="font-bold text-xl bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">
                   Jokers69 Studio
                 </h3>
-                <p className="text-sm text-muted-foreground">Creative Innovation</p>
+                <p className="text-sm text-muted-foreground">
+                  Creative Innovation
+                </p>
               </div>
             </div>
             <p className="text-muted-foreground leading-relaxed">
-              Where creativity meets innovation. We craft digital experiences that inspire, engage, and transform ideas into reality.
+              Where creativity meets innovation. We craft digital experiences
+              that inspire, engage, and transform ideas into reality.
             </p>
             <div className="flex gap-2">
-              <Badge variant="outline" className="bg-purple-50 text-purple-700 border-purple-200 dark:bg-purple-950/30 dark:text-purple-300 dark:border-purple-700">
+              <Badge
+                variant="outline"
+                className="bg-purple-50 text-purple-700 border-purple-200 dark:bg-purple-950/30 dark:text-purple-300 dark:border-purple-700"
+              >
                 <Code className="h-3 w-3 mr-1" />
                 Development
               </Badge>
-              <Badge variant="outline" className="bg-pink-50 text-pink-700 border-pink-200 dark:bg-pink-950/30 dark:text-pink-300 dark:border-pink-700">
+              <Badge
+                variant="outline"
+                className="bg-pink-50 text-pink-700 border-pink-200 dark:bg-pink-950/30 dark:text-pink-300 dark:border-pink-700"
+              >
                 <Palette className="h-3 w-3 mr-1" />
                 Design
               </Badge>
@@ -99,16 +108,24 @@ const Footer: React.FC = () => {
                   >
                     <a
                       href={link.href}
-                      target={link.href.startsWith('http') ? '_blank' : undefined}
-                      rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      target={
+                        link.href.startsWith("http") ? "_blank" : undefined
+                      }
+                      rel={
+                        link.href.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
                       className="flex items-center gap-3 w-full"
                     >
                       <Icon className="h-4 w-4 group-hover:scale-110 transition-transform" />
                       <div className="text-left">
                         <div className="font-medium">{link.label}</div>
-                        <div className="text-xs text-muted-foreground">{link.description}</div>
+                        <div className="text-xs text-muted-foreground">
+                          {link.description}
+                        </div>
                       </div>
-                      {link.href.startsWith('http') && (
+                      {link.href.startsWith("http") && (
                         <ExternalLink className="h-3 w-3 ml-auto group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                       )}
                     </a>
@@ -116,18 +133,21 @@ const Footer: React.FC = () => {
                 );
               })}
             </div>
-            
+
             {/* CTA */}
             <div className="pt-4">
               <p className="text-sm text-muted-foreground mb-3">
                 Ready to start a project?
               </p>
-              <Button 
+              <Button
                 asChild
                 size="sm"
                 className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white border-0"
               >
-                <a href="mailto:thejokkers69@gmail.com" className="flex items-center gap-2">
+                <a
+                  href="mailto:thejokkers69@gmail.com"
+                  className="flex items-center gap-2"
+                >
                   <Mail className="h-4 w-4" />
                   Get in touch
                 </a>
@@ -143,10 +163,15 @@ const Footer: React.FC = () => {
           <div className="flex items-center gap-2">
             <span>© {currentYear} Jokers69 Studio.</span>
             <span className="flex items-center gap-1">
-              Made with <Heart className="h-3 w-3 text-red-500 animate-pulse" fill="currentColor" /> and creativity
+              Made with{" "}
+              <Heart
+                className="h-3 w-3 text-red-500 animate-pulse"
+                fill="currentColor"
+              />{" "}
+              and creativity
             </span>
           </div>
-          
+
           <div className="flex items-center gap-4">
             <span className="text-xs bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent font-medium">
               🎭 Playful. Innovative. Impactful.

@@ -21,7 +21,7 @@ const Projects: React.FC = () => {
       status: "Live",
       stars: "24",
       forks: "8",
-      color: "purple"
+      color: "purple",
     },
     {
       name: "CodeJoker CLI",
@@ -31,7 +31,7 @@ const Projects: React.FC = () => {
       status: "Beta",
       stars: "156",
       forks: "23",
-      color: "pink"
+      color: "pink",
     },
     {
       name: "JokerSphere",
@@ -41,25 +41,33 @@ const Projects: React.FC = () => {
       status: "Development",
       stars: "89",
       forks: "15",
-      color: "blue"
+      color: "blue",
     },
   ];
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case "Live": return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 border-green-200 dark:border-green-700";
-      case "Beta": return "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300 border-orange-200 dark:border-orange-700";
-      case "Development": return "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 border-blue-200 dark:border-blue-700";
-      default: return "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300 border-gray-200 dark:border-gray-700";
+      case "Live":
+        return "bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 border-green-200 dark:border-green-700";
+      case "Beta":
+        return "bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300 border-orange-200 dark:border-orange-700";
+      case "Development":
+        return "bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 border-blue-200 dark:border-blue-700";
+      default:
+        return "bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300 border-gray-200 dark:border-gray-700";
     }
   };
 
   const getCardColor = (color: string) => {
     switch (color) {
-      case "purple": return "hover:border-purple-200 dark:hover:border-purple-700 hover:shadow-purple-500/20 dark:hover:shadow-purple-500/30 group-hover:from-purple-50/50 dark:group-hover:from-purple-950/20";
-      case "pink": return "hover:border-pink-200 dark:hover:border-pink-700 hover:shadow-pink-500/20 dark:hover:shadow-pink-500/30 group-hover:from-pink-50/50 dark:group-hover:from-pink-950/20";
-      case "blue": return "hover:border-blue-200 dark:hover:border-blue-700 hover:shadow-blue-500/20 dark:hover:shadow-blue-500/30 group-hover:from-blue-50/50 dark:group-hover:from-blue-950/20";
-      default: return "hover:border-gray-200 dark:hover:border-gray-700 hover:shadow-gray-500/20 dark:hover:shadow-gray-500/30";
+      case "purple":
+        return "hover:border-purple-200 dark:hover:border-purple-700 hover:shadow-purple-500/20 dark:hover:shadow-purple-500/30 group-hover:from-purple-50/50 dark:group-hover:from-purple-950/20";
+      case "pink":
+        return "hover:border-pink-200 dark:hover:border-pink-700 hover:shadow-pink-500/20 dark:hover:shadow-pink-500/30 group-hover:from-pink-50/50 dark:group-hover:from-pink-950/20";
+      case "blue":
+        return "hover:border-blue-200 dark:hover:border-blue-700 hover:shadow-blue-500/20 dark:hover:shadow-blue-500/30 group-hover:from-blue-50/50 dark:group-hover:from-blue-950/20";
+      default:
+        return "hover:border-gray-200 dark:hover:border-gray-700 hover:shadow-gray-500/20 dark:hover:shadow-gray-500/30";
     }
   };
 
@@ -74,33 +82,41 @@ const Projects: React.FC = () => {
             Discover our latest innovations and creative solutions
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <Card
               key={project.name}
-              className={`group relative overflow-hidden border-2 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${getCardColor(project.color)} backdrop-blur-sm`}
+              className={`group relative overflow-hidden border-2 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${getCardColor(
+                project.color
+              )} backdrop-blur-sm`}
             >
               {/* Background gradient overlay */}
-              <div className={`absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${getCardColor(project.color)}`} />
-              
+              <div
+                className={`absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${getCardColor(
+                  project.color
+                )}`}
+              />
+
               <CardHeader className="relative z-10 pb-4">
                 <div className="flex items-start justify-between mb-3">
                   <CardTitle className="text-xl font-bold group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
                     {project.name}
                   </CardTitle>
-                  <Badge 
-                    variant="outline" 
-                    className={`text-xs font-medium border ${getStatusColor(project.status)}`}
+                  <Badge
+                    variant="outline"
+                    className={`text-xs font-medium border ${getStatusColor(
+                      project.status
+                    )}`}
                   >
                     {project.status}
                   </Badge>
                 </div>
-                
+
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2 mb-3">
                   {project.stack.map((tech) => (
-                    <Badge 
+                    <Badge
                       key={tech}
                       variant="secondary"
                       className="text-xs px-2 py-1 bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
@@ -122,13 +138,13 @@ const Projects: React.FC = () => {
                   </div>
                 </div>
               </CardHeader>
-              
+
               <CardContent className="relative z-10 pb-6">
                 <p className="text-muted-foreground leading-relaxed">
                   {project.desc}
                 </p>
               </CardContent>
-              
+
               <CardFooter className="relative z-10 pt-0">
                 <Button
                   variant="outline"
@@ -157,15 +173,15 @@ const Projects: React.FC = () => {
           <p className="text-muted-foreground mb-6">
             Want to see more? Check out our complete portfolio on GitHub
           </p>
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             size="lg"
             asChild
             className="bg-gradient-to-r from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 border-2 hover:scale-105 transition-all duration-300"
           >
-            <a 
-              href="https://github.com/thejokers69" 
-              target="_blank" 
+            <a
+              href="https://github.com/thejokers69"
+              target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2"
             >
