@@ -74,7 +74,7 @@ export default function ContactPage() {
                     <div>
                       <p className="font-medium">Business Inquiries</p>
                       <p className="text-muted-foreground">
-                        hello@jokers69studio.com
+                        thejokkers69@gmail.com
                       </p>
                     </div>
                   </div>
@@ -83,7 +83,7 @@ export default function ContactPage() {
                     <Phone className="h-5 w-5 text-primary" />
                     <div>
                       <p className="font-medium">Phone</p>
-                      <p className="text-muted-foreground">+1 (555) JOKER-69</p>
+                      <p className="text-muted-foreground">+212 631647445</p>
                     </div>
                   </div>
 
@@ -92,7 +92,7 @@ export default function ContactPage() {
                     <div>
                       <p className="font-medium">Studio Location</p>
                       <p className="text-muted-foreground">
-                        San Francisco Bay Area, CA
+                        Remote-First Studio • Global Collaboration
                       </p>
                     </div>
                   </div>
@@ -125,11 +125,11 @@ export default function ContactPage() {
                   </div>
 
                   <div className="mt-6 p-4 bg-muted/50 rounded-lg">
-                    <h4 className="font-semibold mb-2">Business Hours</h4>
+                    <h4 className="font-semibold mb-2">Working Hours</h4>
                     <div className="text-sm text-muted-foreground space-y-1">
-                      <p>Monday - Friday: 9:00 AM - 6:00 PM PST</p>
-                      <p>Saturday: 10:00 AM - 4:00 PM PST</p>
-                      <p>Sunday: By appointment only</p>
+                      <p>Monday - Friday: Flexible hours (GMT+1)</p>
+                      <p>Weekends: Available for urgent projects</p>
+                      <p>24/7: Email support for existing clients</p>
                     </div>
                   </div>
                 </div>
