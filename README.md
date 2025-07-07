@@ -1,6 +1,6 @@
 # 🎭 Jokers69 Studio
 
-![Jokers69 Studio Logo](/assets/img/Logo-Of-TheJokerML.jpg)
+![Jokers69 Studio Logo](../assets/img/Logo-Of-TheJokerML.jpg)
 
 **Where Creativity Meets Innovation**  
 
