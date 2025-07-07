@@ -221,10 +221,6 @@ web_modules/
 
 # Next.js build output
 .next
-out
-
-# Static export output
-out/
 
 # Nuxt.js build / generate output
 .nuxt
@@ -273,28 +269,5 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-out/404.html
-out/index.html
-out/index.txt
-out/404/index.html
-out/_next/static/1iqy0pzqQvGxim7dn2v9R/_buildManifest.js
-out/_next/static/1iqy0pzqQvGxim7dn2v9R/_ssgManifest.js
-out/_next/static/chunks/763-e422a9d9f0383183.js
-out/_next/static/chunks/webpack-e47d4d89a2528958.js
-out/_next/static/chunks/app/error-620aa8cc362afba1.js
-out/_next/static/chunks/app/layout-a1a9ccc0a70b1330.js
-out/_next/static/chunks/app/loading-aa5f19825b1f39bc.js
-out/_next/static/chunks/app/not-found-b82df1e2608d058a.js
-out/_next/static/chunks/app/page-21fcc933fd17dd66.js
-out/_next/static/chunks/app/_not-found/page-ef8c0903a667debb.js
-out/_next/static/chunks/app/api/hello/route-07c85215832a51bd.js
-out/_next/static/css/d659a17fe788ec78.css
-out/_next/static/css/ddfd4387e47084e4.css
-out/_next/static/media/29e7bbdce9332268-s.woff2
-out/_next/static/media/034d78ad42e9620c-s.woff2
-out/_next/static/media/0484562807a97172-s.p.woff2
-out/_next/static/media/c3bc380753a8436c-s.woff2
-out/_next/static/media/eafabf029ad39a43-s.p.woff2
-out/_next/static/media/fe0777f1195381cb-s.woff2
-out/api/hello
 .DS_Store
+.vercel
