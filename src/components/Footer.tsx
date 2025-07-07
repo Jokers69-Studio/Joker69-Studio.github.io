@@ -94,7 +94,7 @@ const Footer: React.FC = () => {
 
           {/* Contact & Social */}
           <div className="space-y-6">
-            <h4 className="font-semibold text-lg">Let's Connect</h4>
+            <h4 className="font-semibold text-lg">Let&apos;s Connect</h4>
             <div className="space-y-3">
               {socialLinks.map((link) => {
                 const Icon = link.icon;

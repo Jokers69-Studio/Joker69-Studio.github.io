@@ -5,47 +5,47 @@ import { Badge } from "@/components/ui/badge";
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="relative text-center py-16 px-4">
+    <section id="home" className="relative text-center py-20 px-4">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 via-pink-50/30 to-blue-50/50 dark:from-purple-950/20 dark:via-pink-950/10 dark:to-blue-950/20 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-50/40 via-pink-50/20 to-blue-50/40 dark:from-purple-950/15 dark:via-pink-950/8 dark:to-blue-950/15 pointer-events-none rounded-2xl" />
 
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Profile Section */}
-        <div className="relative mb-12">
+        <div className="relative mb-16">
           <div className="relative inline-block">
             <Image
               src="/assets/img/Logo-Of-TheJokerML.jpg"
-              alt=""
-              className="mx-auto mb-6 w-40 h-40 rounded-full border-4 border-gradient-to-r from-purple-400 to-pink-400 shadow-2xl shadow-purple-500/25 dark:shadow-purple-500/40 transition-all duration-300 hover:scale-105"
-              width={160}
-              height={160}
+              alt="Jokers69 Studio Logo"
+              className="mx-auto mb-8 w-48 h-48 rounded-full border-4 border-gradient-to-r from-purple-400 to-pink-400 shadow-2xl shadow-purple-500/25 dark:shadow-purple-500/40 transition-all duration-300 hover:scale-105"
+              width={192}
+              height={192}
             />
-            <div className="absolute -top-2 -right-2">
+            <div className="absolute -top-3 -right-3">
               <Badge
                 variant="secondary"
-                className="bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300 border border-purple-200 dark:border-purple-700 animate-pulse"
+                className="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300 border border-green-200 dark:border-green-700 animate-pulse px-3 py-1"
               >
                 ✨ Available
               </Badge>
             </div>
           </div>
 
-          <h1 className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent mb-4 tracking-tight">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent mb-6 tracking-tight">
             🎭 Jokers69 Studio
           </h1>
-          <p className="text-2xl text-muted-foreground mb-4 font-medium">
+          <p className="text-xl md:text-2xl text-muted-foreground mb-6 font-medium">
             Where Creativity Meets Innovation
           </p>
-          <p className="text-lg text-muted-foreground/80 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-muted-foreground/80 max-w-3xl mx-auto leading-relaxed">
             Transforming ideas into digital masterpieces through cutting-edge
             technology and creative excellence
           </p>
         </div>
 
         {/* Services Section */}
-        <div className="mt-16">
+        <div id="about" className="mt-20">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-gray-700 dark:from-gray-100 dark:to-gray-300 bg-clip-text text-transparent">
               🚀 What We Do
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">

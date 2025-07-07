@@ -1,5 +1,6 @@
 .
 ├── CNAME
+├── components.json
 ├── eslint.config.mjs
 ├── index.html
 ├── LICENSE
@@ -16,27 +17,48 @@
 ├── README.md
 ├── SECURITY.md
 ├── src
+│   ├── app
+│   │   ├── api
+│   │   │   └── hello
+│   │   │       └── route.ts
+│   │   ├── error.tsx
+│   │   ├── layout.tsx
+│   │   ├── loading.tsx
+│   │   ├── not-found.tsx
+│   │   └── page.tsx
 │   ├── assets
 │   │   └── img
 │   │       └── Logo-Of-TheJokerML.jpg
 │   ├── components
 │   │   ├── About.tsx
 │   │   ├── Footer.tsx
-│   │   ├── Header.tsx
 │   │   ├── Layout
-│   │   ├── Navigation
+│   │   │   ├── AppLayout.tsx
+│   │   │   ├── AppSidebar.tsx
+│   │   │   └── index.ts
+│   │   ├── mode-toggle.tsx
 │   │   ├── Projects.tsx
-│   │   └── Skills.tsx
-│   ├── pages
-│   │   ├── _app.tsx
-│   │   ├── _document.tsx
-│   │   ├── api
-│   │   │   └── hello.ts
-│   │   └── index.tsx
+│   │   ├── Skills.tsx
+│   │   └── ui
+│   │       ├── badge.tsx
+│   │       ├── button.tsx
+│   │       ├── card.tsx
+│   │       ├── dropdown-menu.tsx
+│   │       ├── input.tsx
+│   │       ├── navigation-menu.tsx
+│   │       ├── separator.tsx
+│   │       ├── sheet.tsx
+│   │       ├── sidebar.tsx
+│   │       ├── skeleton.tsx
+│   │       └── tooltip.tsx
+│   ├── hooks
+│   │   └── use-mobile.ts
+│   ├── lib
+│   │   └── utils.ts
 │   ├── providers
 │   │   └── theme-provider.tsx
 │   └── styles
 │       └── globals.css
 └── tsconfig.json
 
-14 directories, 26 files
+17 directories, 45 files
