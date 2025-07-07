@@ -15,7 +15,7 @@ const About: React.FC = () => {
           <div className="relative inline-block">
             <Image
               src="/assets/img/Logo-Of-TheJokerML.jpg"
-              alt="Jokers69 Studio Logo"
+              alt=""
               className="mx-auto mb-6 w-40 h-40 rounded-full border-4 border-gradient-to-r from-purple-400 to-pink-400 shadow-2xl shadow-purple-500/25 dark:shadow-purple-500/40 transition-all duration-300 hover:scale-105"
               width={160}
               height={160}
