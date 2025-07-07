@@ -8,26 +8,26 @@ const Skills: React.FC = () => {
       category: "Frontend",
       icon: "🎨",
       skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js"],
-      color: "purple"
+      color: "purple",
     },
     {
       category: "Backend",
       icon: "⚙️",
       skills: ["Node.js", "Python", "Express", "FastAPI", "PostgreSQL"],
-      color: "blue"
+      color: "blue",
     },
     {
       category: "Tools & Services",
       icon: "🛠️",
       skills: ["Docker", "AWS", "Git", "Firebase", "Vercel"],
-      color: "green"
+      color: "green",
     },
     {
       category: "Creative",
       icon: "✨",
       skills: ["UI/UX Design", "Figma", "Creative Coding", "Animation"],
-      color: "pink"
-    }
+      color: "pink",
+    },
   ];
 
   const getColorClasses = (color: string) => {
@@ -35,27 +35,32 @@ const Skills: React.FC = () => {
       case "purple":
         return {
           card: "border-purple-200 dark:border-purple-800 bg-gradient-to-br from-purple-50/50 to-purple-100/30 dark:from-purple-950/20 dark:to-purple-900/30",
-          badge: "bg-purple-100 text-purple-800 hover:bg-purple-200 dark:bg-purple-900/30 dark:text-purple-300 dark:hover:bg-purple-900/50 border-purple-200 dark:border-purple-700"
+          badge:
+            "bg-purple-100 text-purple-800 hover:bg-purple-200 dark:bg-purple-900/30 dark:text-purple-300 dark:hover:bg-purple-900/50 border-purple-200 dark:border-purple-700",
         };
       case "blue":
         return {
           card: "border-blue-200 dark:border-blue-800 bg-gradient-to-br from-blue-50/50 to-blue-100/30 dark:from-blue-950/20 dark:to-blue-900/30",
-          badge: "bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-900/50 border-blue-200 dark:border-blue-700"
+          badge:
+            "bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900/30 dark:text-blue-300 dark:hover:bg-blue-900/50 border-blue-200 dark:border-blue-700",
         };
       case "green":
         return {
           card: "border-green-200 dark:border-green-800 bg-gradient-to-br from-green-50/50 to-green-100/30 dark:from-green-950/20 dark:to-green-900/30",
-          badge: "bg-green-100 text-green-800 hover:bg-green-200 dark:bg-green-900/30 dark:text-green-300 dark:hover:bg-green-900/50 border-green-200 dark:border-green-700"
+          badge:
+            "bg-green-100 text-green-800 hover:bg-green-200 dark:bg-green-900/30 dark:text-green-300 dark:hover:bg-green-900/50 border-green-200 dark:border-green-700",
         };
       case "pink":
         return {
           card: "border-pink-200 dark:border-pink-800 bg-gradient-to-br from-pink-50/50 to-pink-100/30 dark:from-pink-950/20 dark:to-pink-900/30",
-          badge: "bg-pink-100 text-pink-800 hover:bg-pink-200 dark:bg-pink-900/30 dark:text-pink-300 dark:hover:bg-pink-900/50 border-pink-200 dark:border-pink-700"
+          badge:
+            "bg-pink-100 text-pink-800 hover:bg-pink-200 dark:bg-pink-900/30 dark:text-pink-300 dark:hover:bg-pink-900/50 border-pink-200 dark:border-pink-700",
         };
       default:
         return {
           card: "border-gray-200 dark:border-gray-800",
-          badge: "bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-900/30 dark:text-gray-300 dark:hover:bg-gray-900/50"
+          badge:
+            "bg-gray-100 text-gray-800 hover:bg-gray-200 dark:bg-gray-900/30 dark:text-gray-300 dark:hover:bg-gray-900/50",
         };
     }
   };
@@ -76,7 +81,7 @@ const Skills: React.FC = () => {
           {skillCategories.map((category) => {
             const colors = getColorClasses(category.color);
             return (
-              <Card 
+              <Card
                 key={category.category}
                 className={`group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 ${colors.card}`}
               >
@@ -85,7 +90,9 @@ const Skills: React.FC = () => {
                     <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-300">
                       {category.icon}
                     </div>
-                    <h3 className="font-bold text-lg mb-4">{category.category}</h3>
+                    <h3 className="font-bold text-lg mb-4">
+                      {category.category}
+                    </h3>
                   </div>
                   <div className="flex flex-wrap gap-2 justify-center">
                     {category.skills.map((skill) => (
@@ -111,9 +118,20 @@ const Skills: React.FC = () => {
           </h3>
           <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
             {[
-              "Machine Learning", "WebGL", "Three.js", "GraphQL", "Rust", 
-              "Go", "Kubernetes", "Blockchain", "AR/VR", "IoT",
-              "Progressive Web Apps", "Microservices", "DevOps", "Cybersecurity"
+              "Machine Learning",
+              "WebGL",
+              "Three.js",
+              "GraphQL",
+              "Rust",
+              "Go",
+              "Kubernetes",
+              "Blockchain",
+              "AR/VR",
+              "IoT",
+              "Progressive Web Apps",
+              "Microservices",
+              "DevOps",
+              "Cybersecurity",
             ].map((skill) => (
               <Badge
                 key={skill}
