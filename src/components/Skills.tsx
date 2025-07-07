@@ -1,6 +1,7 @@
 import React from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 
 const Skills: React.FC = () => {
   const skillCategories = [
@@ -83,7 +84,10 @@ const Skills: React.FC = () => {
             return (
               <Card
                 key={category.category}
-                className={`group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 ${colors.card}`}
+                className={cn(
+                  "group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2",
+                  colors.card
+                )}
               >
                 <CardContent className="p-6">
                   <div className="text-center mb-4">
@@ -99,7 +103,10 @@ const Skills: React.FC = () => {
                       <Badge
                         key={skill}
                         variant="outline"
-                        className={`text-xs px-3 py-1 transition-all duration-300 hover:scale-105 border ${colors.badge}`}
+                        className={cn(
+                          "text-xs px-3 py-1 transition-all duration-300 hover:scale-105 border",
+                          colors.badge
+                        )}
                       >
                         {skill}
                       </Badge>

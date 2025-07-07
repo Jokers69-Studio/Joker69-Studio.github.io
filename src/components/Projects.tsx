@@ -2,7 +2,6 @@ import React from "react";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -10,6 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github, Star, GitFork } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const Projects: React.FC = () => {
   const projects = [
@@ -84,18 +84,20 @@ const Projects: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <Card
               key={project.name}
-              className={`group relative overflow-hidden border-2 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${getCardColor(
-                project.color
-              )} backdrop-blur-sm`}
+              className={cn(
+                "group relative overflow-hidden border-2 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl backdrop-blur-sm",
+                getCardColor(project.color)
+              )}
             >
               {/* Background gradient overlay */}
               <div
-                className={`absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${getCardColor(
-                  project.color
-                )}`}
+                className={cn(
+                  "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+                  getCardColor(project.color)
+                )}
               />
 
               <CardHeader className="relative z-10 pb-4">
@@ -105,9 +107,10 @@ const Projects: React.FC = () => {
                   </CardTitle>
                   <Badge
                     variant="outline"
-                    className={`text-xs font-medium border ${getStatusColor(
-                      project.status
-                    )}`}
+                    className={cn(
+                      "text-xs font-medium border",
+                      getStatusColor(project.status)
+                    )}
                   >
                     {project.status}
                   </Badge>
