@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -13,7 +12,7 @@ const About: React.FC = () => {
         {/* Profile Section */}
         <div className="relative mb-16">
           <div className="relative inline-block">
-            <Image
+            <img
               src="/assets/img/Logo-Of-TheJokerML.jpg"
               alt="Jokers69 Studio Logo"
               className="mx-auto mb-8 w-48 h-48 rounded-full border-4 border-gradient-to-r from-purple-400 to-pink-400 shadow-2xl shadow-purple-500/25 dark:shadow-purple-500/40 transition-all duration-300 hover:scale-105"
