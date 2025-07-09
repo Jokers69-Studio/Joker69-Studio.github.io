@@ -1,0 +1,11 @@
+Image Optimization Report
+========================
+
+Total Images Processed: 2
+Successfully Optimized: 2
+Failed: 0
+
+Total Size Reduction: -15,584 bytes (-18.7%)
+
+Original Total Size: 81.38 KB
+Optimized Total Size: 96.60 KB

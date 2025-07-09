@@ -73,7 +73,40 @@ This project is deployed using **GitHub Pages** with automated CI/CD:
 
 ### 🔄 Continuous Deployment  
 
-The site automatically rebuilds and redeploys when changes are pushed to the `master` branch, ensuring the live site is always up-to-date with the latest code.  
+The site automatically rebuilds and redeploys when changes are pushed to the `master` branch, ensuring the live site is always up-to-date with the latest code.
+
+## 🖼️ Image Optimization
+
+Jokers69 Studio includes a comprehensive image optimization system that automatically detects and optimizes images to improve performance:
+
+### Features
+
+- **Automatic Detection**: Scans entire project for image files
+- **Multiple Formats**: Supports JPEG, PNG, WebP, and AVIF
+- **Quality Control**: Adjustable quality settings (1-100%)
+- **Batch Processing**: Optimize all images at once
+- **GitHub Integration**: Automatic optimization via GitHub Actions
+
+### Usage
+
+```bash
+# Optimize all images
+npm run optimize-images
+
+# Dry run - see what would be optimized
+npm run optimize-images:dry-run
+```
+
+### Imgbot Integration
+
+The project includes `.imgbotconfig` for [Imgbot](https://imgbot.net/) integration, providing:
+
+- Weekly automatic optimization
+- Lossless compression by default
+- Custom PR titles and descriptions
+- Configurable ignore patterns
+
+See [Image Optimization Documentation](./docs/image-optimization.md) for detailed usage instructions.  
 
 ---
 
