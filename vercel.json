@@ -5,5 +5,11 @@
     "installCommand": "pnpm install",
     "regions": [
         "iad1"
+    ],
+    "crons": [
+        {
+            "path": "/api/cron",
+            "schedule": "0 10 * * *"
+        }
     ]
 }

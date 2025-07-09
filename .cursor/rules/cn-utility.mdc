@@ -1,0 +1,13 @@
+---
+description: Ensure cn-utility is used for conditional class handling
+globs: ["**/*.tsx", "**/*.jsx"] # Target React/TSX/JSX files
+alwaysApply: true
+---
+# cn-utility Check
+
+- Always use the `cn` utility (e.g., `clsx` or `classnames`) for conditional class handling in JSX/TSX.
+- Before generating or editing code, check if `cn` is imported from the project's utility library (e.g., `import { cn } from '@/lib/utils'`).
+- If `cn` is not imported, add the import statement.
+- Verify that className attributes use `cn` for dynamic or conditional classes (e.g., `className={cn('base-class', condition && 'conditional-class')}`).
+- If updating existing code, refactor className strings to use `cn` where applicable.
+- Example: Convert `className="base-class ${condition ? 'active' : ''}"` to `className={cn('base-class', condition && 'active')}`.

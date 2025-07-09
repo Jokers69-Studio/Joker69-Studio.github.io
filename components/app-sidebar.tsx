@@ -1,6 +1,6 @@
 import * as React from "react";
 import Link from "next/link";
-import { User, Code, FolderOpen, Mail, Briefcase } from "lucide-react";
+import { User, Code, FolderOpen, Mail, Briefcase, Search } from "lucide-react";
 import { SearchForm } from "@/components/search-form";
 
 import {
@@ -58,6 +58,11 @@ const data = {
       ],
     },
   ],
+  searchItem: {
+    title: "Search",
+    url: "/search",
+    icon: Search,
+  },
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -72,6 +77,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <SidebarGroup>
           <SidebarMenu>
+            {/* Search Item */}
+            <SidebarMenuItem>
+              <SidebarMenuButton asChild>
+                <Link
+                  href={data.searchItem.url}
+                  className="flex items-center gap-2"
+                >
+                  <data.searchItem.icon className="h-4 w-4" />
+                  {data.searchItem.title}
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+
             {data.navMain.map((item) => (
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild>
