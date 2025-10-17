@@ -1,6 +1,14 @@
 import * as React from "react";
 import Link from "next/link";
-import { User, Code, FolderOpen, Mail, Briefcase, Search } from "lucide-react";
+import {
+  User,
+  Code,
+  FolderOpen,
+  Mail,
+  Briefcase,
+  Search,
+  Clock,
+} from "lucide-react";
 import { SearchForm } from "@/components/search-form";
 
 import {
@@ -46,14 +54,19 @@ const data = {
           icon: FolderOpen,
         },
         {
-          title: "Contact Us",
-          url: "/contact",
-          icon: Mail,
-        },
-        {
           title: "Services",
           url: "/services",
           icon: Briefcase,
+        },
+        {
+          title: "Upcoming Services",
+          url: "/upcoming-services",
+          icon: Clock,
+        },
+        {
+          title: "Contact Us",
+          url: "/contact",
+          icon: Mail,
         },
       ],
     },

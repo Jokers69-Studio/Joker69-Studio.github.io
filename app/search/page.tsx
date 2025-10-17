@@ -126,6 +126,13 @@ const searchData = [
     tags: ["services", "solutions", "digital"],
   },
   {
+    title: "Upcoming Services",
+    url: "/upcoming-services",
+    category: "Services",
+    description: "Exciting new services coming soon - AI, Blockchain, and more",
+    tags: ["upcoming", "ai", "blockchain", "future"],
+  },
+  {
     title: "Software Development",
     url: "/services",
     category: "Services",
@@ -160,71 +167,34 @@ const searchData = [
 const categories = ["All", "Studio", "Skills", "Work", "Services", "Contact"];
 
 export default function SearchPage() {
-  const [searchQuery, setSearchQuery] = useState("");
+  // Initialize recentSearches from localStorage using lazy initialization
+  const [recentSearches, setRecentSearches] = useState<string[]>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("recentSearches");
+      return saved ? JSON.parse(saved) : [];
+    }
+    return [];
+  });
+
+  // Initialize searchQuery from URL parameter using lazy initialization
+  const [searchQuery, setSearchQuery] = useState(() => {
+    if (typeof window !== "undefined") {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get("q") || "";
+    }
+    return "";
+  });
+
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchResults, setSearchResults] = useState<typeof searchData>([]);
   const [isSearching, setIsSearching] = useState(false);
-  const [recentSearches, setRecentSearches] = useState<string[]>([]);
 
-  // Load recent searches from localStorage and handle URL parameters
+  // Handle initial search if query exists in URL
   useEffect(() => {
-    const saved = localStorage.getItem("recentSearches");
-    if (saved) {
-      setRecentSearches(JSON.parse(saved));
+    if (searchQuery) {
+      handleSearch(searchQuery, selectedCategory);
     }
-  }, []); // Only run once on mount
-
-  // Handle URL parameters separately
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const queryParam = urlParams.get("q");
-    if (queryParam) {
-      setSearchQuery(queryParam);
-      // Call handleSearch directly without dependencies
-      const query = queryParam;
-      const category = "All";
-
-      if (!query.trim()) {
-        setSearchResults([]);
-        setIsSearching(false);
-        return;
-      }
-
-      setIsSearching(true);
-
-      // Save to recent searches
-      if (query.trim()) {
-        const currentRecent = JSON.parse(
-          localStorage.getItem("recentSearches") || "[]"
-        );
-        const updated = [
-          query,
-          ...currentRecent.filter((s: string) => s !== query),
-        ].slice(0, 5);
-        setRecentSearches(updated);
-        localStorage.setItem("recentSearches", JSON.stringify(updated));
-      }
-
-      // Simulate search delay
-      setTimeout(() => {
-        const filtered = searchData.filter((item) => {
-          const matchesQuery =
-            item.title.toLowerCase().includes(query.toLowerCase()) ||
-            item.description.toLowerCase().includes(query.toLowerCase()) ||
-            item.tags.some((tag) =>
-              tag.toLowerCase().includes(query.toLowerCase())
-            );
-
-          const matchesCategory =
-            category === "All" || item.category === category;
-
-          return matchesQuery && matchesCategory;
-        });
-
-        setSearchResults(filtered);
-        setIsSearching(false);
-      }, 300);
-    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Only run once on mount
 
   // Handle input change

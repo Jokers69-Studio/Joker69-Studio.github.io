@@ -213,6 +213,9 @@ export default function ServicesPage() {
                 <Button asChild variant="outline" size="lg">
                   <Link href="/projects">View Our Portfolio</Link>
                 </Button>
+                <Button asChild variant="outline" size="lg">
+                  <Link href="/upcoming-services">See What&apos;s Coming</Link>
+                </Button>
               </div>
             </div>
           </div>
