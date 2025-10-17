@@ -167,23 +167,39 @@ const searchData = [
 const categories = ["All", "Studio", "Skills", "Work", "Services", "Contact"];
 
 export default function SearchPage() {
-  // Initialize recentSearches from localStorage using lazy initialization
+  // Initialize recentSearches from localStorage using lazy initialization with error handling
   const [recentSearches, setRecentSearches] = useState<string[]>(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("recentSearches");
-      return saved ? JSON.parse(saved) : [];
+      if (saved) {
+        try {
+          return JSON.parse(saved);
+        } catch (e) {
+          console.error(
+            "Failed to parse recent searches from localStorage:",
+            e
+          );
+          return [];
+        }
+      }
+      return [];
     }
     return [];
   });
 
-  // Initialize searchQuery from URL parameter using lazy initialization
-  const [searchQuery, setSearchQuery] = useState(() => {
+  // Initialize searchQuery as empty string to avoid hydration mismatch
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Sync searchQuery with URL parameter after mount
+  useEffect(() => {
     if (typeof window !== "undefined") {
       const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get("q") || "";
+      const query = urlParams.get("q") || "";
+      if (query) {
+        setSearchQuery(query);
+      }
     }
-    return "";
-  });
+  }, []);
 
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchResults, setSearchResults] = useState<typeof searchData>([]);
@@ -195,7 +211,7 @@ export default function SearchPage() {
       handleSearch(searchQuery, selectedCategory);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Only run once on mount
+  }, [searchQuery]); // Trigger when searchQuery changes
 
   // Handle input change
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -233,15 +249,19 @@ export default function SearchPage() {
 
       // Save to recent searches
       if (query.trim()) {
-        const currentRecent = JSON.parse(
-          localStorage.getItem("recentSearches") || "[]"
-        );
-        const updated = [
-          query,
-          ...currentRecent.filter((s: string) => s !== query),
-        ].slice(0, 5);
-        setRecentSearches(updated);
-        localStorage.setItem("recentSearches", JSON.stringify(updated));
+        try {
+          const currentRecent = JSON.parse(
+            localStorage.getItem("recentSearches") || "[]"
+          );
+          const updated = [
+            query,
+            ...currentRecent.filter((s: string) => s !== query),
+          ].slice(0, 5);
+          setRecentSearches(updated);
+          localStorage.setItem("recentSearches", JSON.stringify(updated));
+        } catch (e) {
+          console.error("Failed to update recent searches:", e);
+        }
       }
 
       // Simulate search delay
