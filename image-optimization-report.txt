@@ -5,7 +5,7 @@ Total Images Processed: 2
 Successfully Optimized: 2
 Failed: 0
 
-Total Size Reduction: -76 bytes (-0.1%)
+Total Size Reduction: 26 bytes (0.0%)
 
-Original Total Size: 96.60 KB
-Optimized Total Size: 96.67 KB
+Original Total Size: 96.67 KB
+Optimized Total Size: 96.64 KB
