@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
@@ -14,7 +15,10 @@ import {
 } from "lucide-react";
 
 const Footer: React.FC = () => {
-  const currentYear = new Date().getFullYear();
+  const [currentYear, setCurrentYear] = React.useState<number | null>(null);
+  React.useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
 
   const socialLinks = [
     {
@@ -180,7 +184,7 @@ const Footer: React.FC = () => {
         {/* Bottom footer */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <div className="flex items-center gap-2">
-            <span>© {currentYear} Jokers69 Studio.</span>
+            <span>© {currentYear ?? ''} Jokers69 Studio.</span>
             <span className="flex items-center gap-1">
               Made with{" "}
               <Heart
