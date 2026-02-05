@@ -35,19 +35,39 @@ export class ImageOptimizer {
     };
   }
 
+  // Ensure a target path resolves inside a given base directory to prevent path traversal.
+  private static ensureInsideBase(base: string, target: string) {
+    const baseResolved = path.resolve(base);
+    const targetResolved = path.resolve(target);
+    const normalizedBase = baseResolved.endsWith(path.sep) ? baseResolved : baseResolved + path.sep;
+    if (targetResolved !== baseResolved && !targetResolved.startsWith(normalizedBase)) {
+      throw new Error(`Path "${target}" is outside of allowed base "${base}"`);
+    }
+  }
+
   /**
    * Detect all images in the project
    */
   async detectImages(projectRoot: string = process.cwd()): Promise<string[]> {
     const images: string[] = [];
     const supportedExtensions = this.supportedExtensions;
+    const projectRootResolved = path.resolve(projectRoot);
     
     async function scanDirectory(dir: string): Promise<void> {
       try {
+        // Ensure we stay within the project root when recursing
+        ImageOptimizer.ensureInsideBase(projectRootResolved, dir);
         const entries = await fs.readdir(dir, { withFileTypes: true });
         
         for (const entry of entries) {
-          const fullPath = path.join(dir, entry.name);
+          const fullPath = path.resolve(dir, entry.name);
+
+          // Skip entries that resolve outside the project root (e.g., symlinks)
+          try {
+            ImageOptimizer.ensureInsideBase(projectRootResolved, fullPath);
+          } catch {
+            continue;
+          }
           
           // Skip node_modules, .git, and other common directories
           if (entry.isDirectory()) {
@@ -62,11 +82,11 @@ export class ImageOptimizer {
           }
         }
       } catch (error) {
-        console.warn(`Error scanning directory ${dir}:`, error);
+        console.warn('Error scanning directory', dir, error);
       }
     }
 
-    await scanDirectory(projectRoot);
+    await scanDirectory(projectRootResolved);
     return images;
   }
 
@@ -89,12 +109,21 @@ export class ImageOptimizer {
     };
 
     try {
+      // Resolve and validate input path to avoid reading files outside the working directory
+      const inputResolved = path.resolve(inputPath);
+      const cwdResolved = process.cwd();
+      try {
+        ImageOptimizer.ensureInsideBase(cwdResolved, inputResolved);
+      } catch {
+        throw new Error('Input path is outside of the current working directory.');
+      }
+
       // Get original file size
-      const originalStats = await fs.stat(inputPath);
+      const originalStats = await fs.stat(inputResolved);
       result.originalSize = originalStats.size;
 
       // Read the image
-      const image = sharp(inputPath);
+      const image = sharp(inputResolved);
       
       // Resize if needed
       if (config.maxWidth || config.maxHeight) {
@@ -146,12 +175,22 @@ export class ImageOptimizer {
           optimizedBuffer = await image.toBuffer();
       }
 
+      // Prepare and validate optimized path
+      const optimizedResolved = path.resolve(result.optimizedPath);
+      const cwdResolved2 = process.cwd();
+      try {
+        ImageOptimizer.ensureInsideBase(cwdResolved2, optimizedResolved);
+      } catch {
+        throw new Error('Optimized path is outside of the current working directory.');
+      }
+
       // Write optimized image
-      await fs.writeFile(result.optimizedPath, optimizedBuffer);
+      await fs.writeFile(optimizedResolved, optimizedBuffer);
       
       // Get optimized file size
-      const optimizedStats = await fs.stat(result.optimizedPath);
+      const optimizedStats = await fs.stat(optimizedResolved);
       result.optimizedSize = optimizedStats.size;
+      result.optimizedPath = optimizedResolved;
       
       // Calculate reduction percentage
       result.reductionPercentage = ((result.originalSize - result.optimizedSize) / result.originalSize) * 100;
@@ -159,7 +198,7 @@ export class ImageOptimizer {
 
     } catch (error) {
       result.error = error instanceof Error ? error.message : 'Unknown error';
-      console.error(`Error optimizing ${inputPath}:`, error);
+      console.error('Error optimizing:', inputPath, error);
     }
 
     return result;
@@ -172,30 +211,48 @@ export class ImageOptimizer {
     projectRoot: string = process.cwd(),
     outputDir?: string
   ): Promise<ImageOptimizationResult[]> {
-    const images = await this.detectImages(projectRoot);
+    const projectRootResolved = path.resolve(projectRoot);
+    const images = await this.detectImages(projectRootResolved);
     const results: ImageOptimizationResult[] = [];
 
-    console.log(`Found ${images.length} images to optimize...`);
+    console.log('Found images to optimize:', images.length);
 
     for (const imagePath of images) {
-      console.log(`Optimizing: ${imagePath}`);
+      console.log('Optimizing:', imagePath);
       
-      let outputPath = imagePath;
+      const imagePathResolved = path.resolve(imagePath);
+      let outputPath = imagePathResolved;
       if (outputDir) {
-        const relativePath = path.relative(projectRoot, imagePath);
-        outputPath = path.join(outputDir, relativePath);
-        
+        const outputDirResolved = path.resolve(outputDir);
+        const relativePath = path.relative(projectRootResolved, imagePathResolved);
+
+        // Safety: if relative goes up from project root (shouldn't happen), skip
+        if (relativePath.startsWith('..') || (path.isAbsolute(relativePath) && relativePath !== '')) {
+          console.warn('Skipping image outside project root:', imagePathResolved);
+          continue;
+        }
+
+        outputPath = path.resolve(outputDirResolved, relativePath);
+
+        // Make sure output path is inside the output directory (protect against path traversal)
+        try {
+          ImageOptimizer.ensureInsideBase(outputDirResolved, outputPath);
+        } catch (error) {
+          console.warn('Output path resolved outside of output directory, skipping:', outputPath, error);
+          continue;
+        }
+
         // Ensure output directory exists
         await fs.mkdir(path.dirname(outputPath), { recursive: true });
       }
 
-      const result = await this.optimizeImage(imagePath, outputPath);
+      const result = await this.optimizeImage(imagePathResolved, outputPath);
       results.push(result);
 
       if (result.success) {
-        console.log(`✓ Optimized: ${path.basename(imagePath)} (${result.reductionPercentage.toFixed(1)}% reduction)`);
+        console.log('✓ Optimized:', path.basename(imagePathResolved), 'Reduction:', result.reductionPercentage.toFixed(1) + '%');
       } else {
-        console.log(`✗ Failed: ${path.basename(imagePath)} - ${result.error}`);
+        console.log('✗ Failed:', path.basename(imagePathResolved), '-', result.error);
       }
     }
 
@@ -221,12 +278,12 @@ Total Images Processed: ${results.length}
 Successfully Optimized: ${successful.length}
 Failed: ${failed.length}
 
-Total Size Reduction: ${(totalOriginalSize - totalOptimizedSize).toLocaleString()} bytes (${totalReduction.toFixed(1)}%)
+Total Size Reduction: ${Intl.NumberFormat('en-US').format(totalOriginalSize - totalOptimizedSize)} bytes (${totalReduction.toFixed(1)}%)
 
 Original Total Size: ${(totalOriginalSize / 1024).toFixed(2)} KB
 Optimized Total Size: ${(totalOptimizedSize / 1024).toFixed(2)} KB
 
-${failed.length > 0 ? `\nFailed Images:\n${failed.map(r => `- ${r.originalPath}: ${r.error}`).join('\n')}` : ''}
+${failed.length > 0 ? `\nFailed Images:\n${failed.map(r => `- ${r.originalPath}: ${String(r.error)}`).join('\n')}` : ''}
     `.trim();
   }
 }

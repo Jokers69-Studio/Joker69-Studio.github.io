@@ -1,5 +1,9 @@
 name: Image Optimization
 
+# Explicitly declare required permissions to satisfy CodeQL and limit scope ✅
+permissions:
+  contents: write
+
 on:
   push:
     paths:

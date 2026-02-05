@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint .",
     "optimize-images": "tsx scripts/optimize-images.ts",
-    "optimize-images:dry-run": "tsx scripts/optimize-images.ts --dry-run"
+    "optimize-images:dry-run": "tsx scripts/optimize-images.ts --dry-run",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
